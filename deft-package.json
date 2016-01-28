@@ -1,0 +1,11 @@
+{
+  "name": "z3",
+  "description": "",
+  "keywords": [
+  ],
+  "license": "MIT",
+  "default-target": "z3",
+  "tests": [
+    "z3-test-suite-app"
+  ]
+}
