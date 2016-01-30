@@ -14,8 +14,10 @@ define test bitvector-example2 ()
   let y = mk-var(ctx, "y", bv-sort);
   let ctr
     = Z3-mk-eq(ctx, Z3-mk-bvsub(ctx, Z3-mk-bvxor(ctx, x, y),
-                                     Z3-mk-numeral(ctx, "103", bv-sort)),
+                                     Z3-mk-int(ctx, 103, bv-sort)),
                     Z3-mk-bvmul(ctx, x, y));
+  assert-equal("(= (bvsub (bvxor x y) #x00000067) (bvmul x y))",
+               Z3-ast-to-string(ctx, ctr));
   Z3-assert-cnstr(ctx, ctr);
   check-model(ctx, $Z3-L-TRUE);
 
