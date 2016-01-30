@@ -14,7 +14,7 @@ define interface
       "z3_fpa.h"
     },
     import: all,
-    inline-functions: inline;
+    inline-functions: inline-only;
 
   function "Z3_check_and_get_model",
     output-argument: 2;
