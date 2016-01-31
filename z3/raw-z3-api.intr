@@ -13,6 +13,7 @@ define interface
       "z3_interp.h",
       "z3_fpa.h"
     },
+    map: {"Z3_bool" => <C-boolean>},
     import: all,
     inline-functions: inline-only;
 

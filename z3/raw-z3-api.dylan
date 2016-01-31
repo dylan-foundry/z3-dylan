@@ -482,7 +482,7 @@ end;
 define inline-only C-function Z3-global-param-get
   input parameter param-id_ :: <Z3-string>;
   input parameter param-value_ :: <Z3-string-ptr>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_global_param_get";
 end;
 
@@ -566,7 +566,7 @@ define inline-only C-function Z3-params-set-bool
   input parameter c_ :: <Z3-context>;
   input parameter p_ :: <Z3-params>;
   input parameter k_ :: <Z3-symbol>;
-  input parameter v_ :: <Z3-bool>;
+  input parameter v_ :: <C-boolean>;
   c-name: "Z3_params_set_bool";
 end;
 
@@ -1380,7 +1380,7 @@ end;
 define inline-only C-function Z3-mk-bv2int
   input parameter c_ :: <Z3-context>;
   input parameter t1_ :: <Z3-ast>;
-  input parameter is-signed_ :: <Z3-bool>;
+  input parameter is-signed_ :: <C-boolean>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_bv2int";
 end;
@@ -1389,7 +1389,7 @@ define inline-only C-function Z3-mk-bvadd-no-overflow
   input parameter c_ :: <Z3-context>;
   input parameter t1_ :: <Z3-ast>;
   input parameter t2_ :: <Z3-ast>;
-  input parameter is-signed_ :: <Z3-bool>;
+  input parameter is-signed_ :: <C-boolean>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_bvadd_no_overflow";
 end;
@@ -1414,7 +1414,7 @@ define inline-only C-function Z3-mk-bvsub-no-underflow
   input parameter c_ :: <Z3-context>;
   input parameter t1_ :: <Z3-ast>;
   input parameter t2_ :: <Z3-ast>;
-  input parameter is-signed_ :: <Z3-bool>;
+  input parameter is-signed_ :: <C-boolean>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_bvsub_no_underflow";
 end;
@@ -1438,7 +1438,7 @@ define inline-only C-function Z3-mk-bvmul-no-overflow
   input parameter c_ :: <Z3-context>;
   input parameter t1_ :: <Z3-ast>;
   input parameter t2_ :: <Z3-ast>;
-  input parameter is-signed_ :: <Z3-bool>;
+  input parameter is-signed_ :: <C-boolean>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_bvmul_no_overflow";
 end;
@@ -1670,7 +1670,7 @@ end;
 
 define inline-only C-function Z3-mk-quantifier
   input parameter c_ :: <Z3-context>;
-  input parameter is-forall_ :: <Z3-bool>;
+  input parameter is-forall_ :: <C-boolean>;
   input parameter weight_ :: <C-unsigned-int>;
   input parameter num-patterns_ :: <C-unsigned-int>;
   input parameter patterns_ :: <Z3-pattern<@>>;
@@ -1684,7 +1684,7 @@ end;
 
 define inline-only C-function Z3-mk-quantifier-ex
   input parameter c_ :: <Z3-context>;
-  input parameter is-forall_ :: <Z3-bool>;
+  input parameter is-forall_ :: <C-boolean>;
   input parameter weight_ :: <C-unsigned-int>;
   input parameter quantifier-id_ :: <Z3-symbol>;
   input parameter skolem-id_ :: <Z3-symbol>;
@@ -1728,7 +1728,7 @@ end;
 
 define inline-only C-function Z3-mk-quantifier-const
   input parameter c_ :: <Z3-context>;
-  input parameter is-forall_ :: <Z3-bool>;
+  input parameter is-forall_ :: <C-boolean>;
   input parameter weight_ :: <C-unsigned-int>;
   input parameter num-bound_ :: <C-unsigned-int>;
   input parameter bound_ :: <Z3-app<@>>;
@@ -1741,7 +1741,7 @@ end;
 
 define inline-only C-function Z3-mk-quantifier-const-ex
   input parameter c_ :: <Z3-context>;
-  input parameter is-forall_ :: <Z3-bool>;
+  input parameter is-forall_ :: <C-boolean>;
   input parameter weight_ :: <C-unsigned-int>;
   input parameter quantifier-id_ :: <Z3-symbol>;
   input parameter skolem-id_ :: <Z3-symbol>;
@@ -1802,7 +1802,7 @@ define inline-only C-function Z3-is-eq-sort
   input parameter c_ :: <Z3-context>;
   input parameter s1_ :: <Z3-sort>;
   input parameter s2_ :: <Z3-sort>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_eq_sort";
 end;
 
@@ -1825,7 +1825,7 @@ define inline-only C-function Z3-get-finite-domain-sort-size
   input parameter c_ :: <Z3-context>;
   input parameter s_ :: <Z3-sort>;
   input parameter r_ :: <unsigned-long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_finite_domain_sort_size";
 end;
 
@@ -1953,7 +1953,7 @@ define inline-only C-function Z3-is-eq-func-decl
   input parameter c_ :: <Z3-context>;
   input parameter f1_ :: <Z3-func-decl>;
   input parameter f2_ :: <Z3-func-decl>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_eq_func_decl";
 end;
 
@@ -2111,7 +2111,7 @@ define inline-only C-function Z3-is-eq-ast
   input parameter c_ :: <Z3-context>;
   input parameter t1_ :: <Z3-ast>;
   input parameter t2_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_eq_ast";
 end;
 
@@ -2139,7 +2139,7 @@ end;
 define inline-only C-function Z3-is-well-sorted
   input parameter c_ :: <Z3-context>;
   input parameter t_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_well_sorted";
 end;
 
@@ -2160,21 +2160,21 @@ end;
 define inline-only C-function Z3-is-app
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_app";
 end;
 
 define inline-only C-function Z3-is-numeral-ast
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_numeral_ast";
 end;
 
 define inline-only C-function Z3-is-algebraic-number
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_algebraic_number";
 end;
 
@@ -2227,7 +2227,7 @@ define inline-only C-function Z3-get-numeral-small
   input parameter a_ :: <Z3-ast>;
   input parameter num_ :: <long-long*>;
   input parameter den_ :: <long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_numeral_small";
 end;
 
@@ -2235,7 +2235,7 @@ define inline-only C-function Z3-get-numeral-int
   input parameter c_ :: <Z3-context>;
   input parameter v_ :: <Z3-ast>;
   input parameter i_ :: <int*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_numeral_int";
 end;
 
@@ -2243,7 +2243,7 @@ define inline-only C-function Z3-get-numeral-uint
   input parameter c_ :: <Z3-context>;
   input parameter v_ :: <Z3-ast>;
   input parameter u_ :: <unsigned-int*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_numeral_uint";
 end;
 
@@ -2251,7 +2251,7 @@ define inline-only C-function Z3-get-numeral-uint64
   input parameter c_ :: <Z3-context>;
   input parameter v_ :: <Z3-ast>;
   input parameter u_ :: <unsigned-long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_numeral_uint64";
 end;
 
@@ -2259,7 +2259,7 @@ define inline-only C-function Z3-get-numeral-int64
   input parameter c_ :: <Z3-context>;
   input parameter v_ :: <Z3-ast>;
   input parameter i_ :: <long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_numeral_int64";
 end;
 
@@ -2268,7 +2268,7 @@ define inline-only C-function Z3-get-numeral-rational-int64
   input parameter v_ :: <Z3-ast>;
   input parameter num_ :: <long-long*>;
   input parameter den_ :: <long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_get_numeral_rational_int64";
 end;
 
@@ -2320,7 +2320,7 @@ end;
 define inline-only C-function Z3-is-quantifier-forall
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_quantifier_forall";
 end;
 
@@ -2470,9 +2470,9 @@ define inline-only C-function Z3-model-eval
   input parameter c_ :: <Z3-context>;
   input parameter m_ :: <Z3-model>;
   input parameter t_ :: <Z3-ast>;
-  input parameter model-completion_ :: <Z3-bool>;
+  input parameter model-completion_ :: <C-boolean>;
   input parameter v_ :: <_Z3-ast**>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_model_eval";
 end;
 
@@ -2488,7 +2488,7 @@ define inline-only C-function Z3-model-has-interp
   input parameter c_ :: <Z3-context>;
   input parameter m_ :: <Z3-model>;
   input parameter a_ :: <Z3-func-decl>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_model_has_interp";
 end;
 
@@ -2556,7 +2556,7 @@ end;
 define inline-only C-function Z3-is-as-array
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_as_array";
 end;
 
@@ -2644,7 +2644,7 @@ end;
 
 define inline-only C-function Z3-open-log
   input parameter filename_ :: <Z3-string>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_open_log";
 end;
 
@@ -2658,7 +2658,7 @@ define inline-only C-function Z3-close-log
 end;
 
 define inline-only C-function Z3-toggle-warning-messages
-  input parameter enabled_ :: <Z3-bool>;
+  input parameter enabled_ :: <C-boolean>;
   c-name: "Z3_toggle_warning_messages";
 end;
 
@@ -3057,7 +3057,7 @@ end;
 
 define inline-only C-function Z3-theory-enable-axiom-simplification
   input parameter t_ :: <Z3-theory>;
-  input parameter flag_ :: <Z3-bool>;
+  input parameter flag_ :: <C-boolean>;
   c-name: "Z3_theory_enable_axiom_simplification";
 end;
 
@@ -3093,14 +3093,14 @@ end;
 define inline-only C-function Z3-theory-is-value
   input parameter t_ :: <Z3-theory>;
   input parameter n_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_theory_is_value";
 end;
 
 define inline-only C-function Z3-theory-is-decl
   input parameter t_ :: <Z3-theory>;
   input parameter d_ :: <Z3-func-decl>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_theory_is_decl";
 end;
 
@@ -3582,7 +3582,7 @@ define inline-only C-function Z3-ast-map-contains
   input parameter c_ :: <Z3-context>;
   input parameter m_ :: <Z3-ast-map>;
   input parameter k_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_ast_map_contains";
 end;
 
@@ -3638,9 +3638,9 @@ end;
 
 define inline-only C-function Z3-mk-goal
   input parameter c_ :: <Z3-context>;
-  input parameter models_ :: <Z3-bool>;
-  input parameter unsat-cores_ :: <Z3-bool>;
-  input parameter proofs_ :: <Z3-bool>;
+  input parameter models_ :: <C-boolean>;
+  input parameter unsat-cores_ :: <C-boolean>;
+  input parameter proofs_ :: <C-boolean>;
   result res :: <Z3-goal>;
   c-name: "Z3_mk_goal";
 end;
@@ -3674,7 +3674,7 @@ end;
 define inline-only C-function Z3-goal-inconsistent
   input parameter c_ :: <Z3-context>;
   input parameter g_ :: <Z3-goal>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_goal_inconsistent";
 end;
 
@@ -3716,14 +3716,14 @@ end;
 define inline-only C-function Z3-goal-is-decided-sat
   input parameter c_ :: <Z3-context>;
   input parameter g_ :: <Z3-goal>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_goal_is_decided_sat";
 end;
 
 define inline-only C-function Z3-goal-is-decided-unsat
   input parameter c_ :: <Z3-context>;
   input parameter g_ :: <Z3-goal>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_goal_is_decided_unsat";
 end;
 
@@ -4275,7 +4275,7 @@ define inline-only C-function Z3-stats-is-uint
   input parameter c_ :: <Z3-context>;
   input parameter s_ :: <Z3-stats>;
   input parameter idx_ :: <C-unsigned-int>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_stats_is_uint";
 end;
 
@@ -4283,7 +4283,7 @@ define inline-only C-function Z3-stats-is-double
   input parameter c_ :: <Z3-context>;
   input parameter s_ :: <Z3-stats>;
   input parameter idx_ :: <C-unsigned-int>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_stats_is_double";
 end;
 
@@ -4316,7 +4316,7 @@ end;
 define inline-only C-function Z3-set-logic
   input parameter c_ :: <Z3-context>;
   input parameter logic_ :: <Z3-string>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_set_logic";
 end;
 
@@ -4406,7 +4406,7 @@ end;
 define inline-only C-function Z3-mk-label
   input parameter c_ :: <Z3-context>;
   input parameter s_ :: <Z3-symbol>;
-  input parameter is-pos_ :: <Z3-bool>;
+  input parameter is-pos_ :: <C-boolean>;
   input parameter f_ :: <Z3-ast>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_label";
@@ -4507,7 +4507,7 @@ define inline-only C-function Z3-eval-func-decl
   input parameter m_ :: <Z3-model>;
   input parameter decl_ :: <Z3-func-decl>;
   input parameter v_ :: <_Z3-ast**>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_eval_func_decl";
 end;
 
@@ -4516,7 +4516,7 @@ define inline-only C-function Z3-is-array-value
   input parameter m_ :: <Z3-model>;
   input parameter v_ :: <Z3-ast>;
   input parameter num-entries_ :: <unsigned-int*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_is_array_value";
 end;
 
@@ -4580,7 +4580,7 @@ define inline-only C-function Z3-eval
   input parameter m_ :: <Z3-model>;
   input parameter t_ :: <Z3-ast>;
   input parameter v_ :: <_Z3-ast**>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_eval";
 end;
 
@@ -4591,7 +4591,7 @@ define inline-only C-function Z3-eval-decl
   input parameter num-args_ :: <C-unsigned-int>;
   input parameter args_ :: <Z3-ast<@>>;
   input parameter v_ :: <_Z3-ast**>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_eval_decl";
 end;
 
@@ -4630,28 +4630,28 @@ define constant $Z3-FALSE = 0;
 define inline-only C-function Z3-algebraic-is-value
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_is_value";
 end;
 
 define inline-only C-function Z3-algebraic-is-pos
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_is_pos";
 end;
 
 define inline-only C-function Z3-algebraic-is-neg
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_is_neg";
 end;
 
 define inline-only C-function Z3-algebraic-is-zero
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_is_zero";
 end;
 
@@ -4714,7 +4714,7 @@ define inline-only C-function Z3-algebraic-lt
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
   input parameter b_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_lt";
 end;
 
@@ -4722,7 +4722,7 @@ define inline-only C-function Z3-algebraic-gt
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
   input parameter b_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_gt";
 end;
 
@@ -4730,7 +4730,7 @@ define inline-only C-function Z3-algebraic-le
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
   input parameter b_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_le";
 end;
 
@@ -4738,7 +4738,7 @@ define inline-only C-function Z3-algebraic-ge
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
   input parameter b_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_ge";
 end;
 
@@ -4746,7 +4746,7 @@ define inline-only C-function Z3-algebraic-eq
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
   input parameter b_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_eq";
 end;
 
@@ -4754,7 +4754,7 @@ define inline-only C-function Z3-algebraic-neq
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-ast>;
   input parameter b_ :: <Z3-ast>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_algebraic_neq";
 end;
 
@@ -4892,7 +4892,7 @@ define inline-only C-function Z3-rcf-lt
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
   input parameter b_ :: <Z3-rcf-num>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_rcf_lt";
 end;
 
@@ -4900,7 +4900,7 @@ define inline-only C-function Z3-rcf-gt
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
   input parameter b_ :: <Z3-rcf-num>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_rcf_gt";
 end;
 
@@ -4908,7 +4908,7 @@ define inline-only C-function Z3-rcf-le
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
   input parameter b_ :: <Z3-rcf-num>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_rcf_le";
 end;
 
@@ -4916,7 +4916,7 @@ define inline-only C-function Z3-rcf-ge
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
   input parameter b_ :: <Z3-rcf-num>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_rcf_ge";
 end;
 
@@ -4924,7 +4924,7 @@ define inline-only C-function Z3-rcf-eq
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
   input parameter b_ :: <Z3-rcf-num>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_rcf_eq";
 end;
 
@@ -4932,15 +4932,15 @@ define inline-only C-function Z3-rcf-neq
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
   input parameter b_ :: <Z3-rcf-num>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_rcf_neq";
 end;
 
 define inline-only C-function Z3-rcf-num-to-string
   input parameter c_ :: <Z3-context>;
   input parameter a_ :: <Z3-rcf-num>;
-  input parameter compact_ :: <Z3-bool>;
-  input parameter html_ :: <Z3-bool>;
+  input parameter compact_ :: <C-boolean>;
+  input parameter html_ :: <C-boolean>;
   result res :: <Z3-string>;
   c-name: "Z3_rcf_num_to_string";
 end;
@@ -5173,7 +5173,7 @@ end;
 define inline-only C-function Z3-mk-fpa-inf
   input parameter c_ :: <Z3-context>;
   input parameter s_ :: <Z3-sort>;
-  input parameter negative_ :: <Z3-bool>;
+  input parameter negative_ :: <C-boolean>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_fpa_inf";
 end;
@@ -5181,7 +5181,7 @@ end;
 define inline-only C-function Z3-mk-fpa-zero
   input parameter c_ :: <Z3-context>;
   input parameter s_ :: <Z3-sort>;
-  input parameter negative_ :: <Z3-bool>;
+  input parameter negative_ :: <C-boolean>;
   result res :: <Z3-ast>;
   c-name: "Z3_mk_fpa_zero";
 end;
@@ -5221,7 +5221,7 @@ end;
 
 define inline-only C-function Z3-mk-fpa-numeral-int-uint
   input parameter c_ :: <Z3-context>;
-  input parameter sgn_ :: <Z3-bool>;
+  input parameter sgn_ :: <C-boolean>;
   input parameter exp_ :: <C-signed-int>;
   input parameter sig_ :: <C-unsigned-int>;
   input parameter ty_ :: <Z3-sort>;
@@ -5231,7 +5231,7 @@ end;
 
 define inline-only C-function Z3-mk-fpa-numeral-int64-uint64
   input parameter c_ :: <Z3-context>;
-  input parameter sgn_ :: <Z3-bool>;
+  input parameter sgn_ :: <C-boolean>;
   input parameter exp_ :: <C-signed-long>;
   input parameter sig_ :: <C-unsigned-long>;
   input parameter ty_ :: <Z3-sort>;
@@ -5515,7 +5515,7 @@ define inline-only C-function Z3-fpa-get-numeral-sign
   input parameter c_ :: <Z3-context>;
   input parameter t_ :: <Z3-ast>;
   input parameter sgn_ :: <int*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_fpa_get_numeral_sign";
 end;
 
@@ -5530,7 +5530,7 @@ define inline-only C-function Z3-fpa-get-numeral-significand-uint64
   input parameter c_ :: <Z3-context>;
   input parameter t_ :: <Z3-ast>;
   input parameter n_ :: <unsigned-long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_fpa_get_numeral_significand_uint64";
 end;
 
@@ -5545,7 +5545,7 @@ define inline-only C-function Z3-fpa-get-numeral-exponent-int64
   input parameter c_ :: <Z3-context>;
   input parameter t_ :: <Z3-ast>;
   input parameter n_ :: <long-long*>;
-  result res :: <Z3-bool>;
+  result res :: <C-boolean>;
   c-name: "Z3_fpa_get_numeral_exponent_int64";
 end;
 
