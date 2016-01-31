@@ -24,7 +24,18 @@ define test bitvector-example2 ()
   Z3-del-context(ctx);
 end test;
 
+define test boolean-simplification ()
+  let ctx = mk-context();
+  let boolean-sort = Z3-mk-bool-sort(ctx);
+  let x = mk-var(ctx, "x", boolean-sort);
+  let f = Z3-mk-false(ctx);
+  let ast = Z3-mk-and(ctx, x, f);
+  assert-equal("false",
+               Z3-ast-to-string(ctx, Z3-simplify(ctx, ast)));
+end test;
+
 define suite z3-test-suite ()
   test simple-test;
   test bitvector-example2;
+  test boolean-simplification;
 end suite;
