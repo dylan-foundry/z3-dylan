@@ -1,7 +1,7 @@
 MELANGE=melange
 
-z3-api.dylan: z3-api.intr
+raw-z3-api.dylan: raw-z3-api.intr
 	$(MELANGE) -Tc-ffi \
-	           -m module-z3-api.dylan \
-	           z3-api.intr \
-	           z3-api.dylan
+	           -m module-raw-z3-api.dylan \
+	           raw-z3-api.intr \
+	           raw-z3-api.dylan

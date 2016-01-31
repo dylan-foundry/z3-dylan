@@ -1,6 +1,6 @@
 module: dylan-user
 
-define module z3-api
+define module %z3-api
   use common-dylan;
   use c-ffi;
   export
@@ -272,6 +272,14 @@ define module z3-api
     $Z3-UNKNOWN-AST,
     $Z3-UNKNOWN-SORT,
     $Z3-VAR-AST,
+    %Z3-mk-add,
+    %Z3-mk-and,
+    %Z3-mk-distinct,
+    %Z3-mk-mul,
+    %Z3-mk-or,
+    %Z3-mk-set-intersect,
+    %Z3-mk-set-union,
+    %Z3-mk-sub,
     <Z3-app<@>>,
     <Z3-app>,
     <Z3-apply-result>,
@@ -677,8 +685,6 @@ define module z3-api
     Z3-is-numeral-ast,
     Z3-is-quantifier-forall,
     Z3-is-well-sorted,
-    Z3-mk-add,
-    Z3-mk-and,
     Z3-mk-app,
     Z3-mk-array-default,
     Z3-mk-array-sort,
@@ -736,7 +742,6 @@ define module z3-api
     Z3-mk-context-rc,
     Z3-mk-datatype,
     Z3-mk-datatypes,
-    Z3-mk-distinct,
     Z3-mk-div,
     Z3-mk-empty-set,
     Z3-mk-enumeration-sort,
@@ -840,11 +845,9 @@ define module z3-api
     Z3-mk-lt,
     Z3-mk-map,
     Z3-mk-mod,
-    Z3-mk-mul,
     Z3-mk-not,
     Z3-mk-numeral,
     Z3-mk-optimize,
-    Z3-mk-or,
     Z3-mk-params,
     Z3-mk-pattern,
     Z3-mk-pble,
@@ -866,11 +869,9 @@ define module z3-api
     Z3-mk-set-complement,
     Z3-mk-set-del,
     Z3-mk-set-difference,
-    Z3-mk-set-intersect,
     Z3-mk-set-member,
     Z3-mk-set-sort,
     Z3-mk-set-subset,
-    Z3-mk-set-union,
     Z3-mk-sign-ext,
     Z3-mk-simple-solver,
     Z3-mk-solver,
@@ -878,7 +879,6 @@ define module z3-api
     Z3-mk-solver-from-tactic,
     Z3-mk-store,
     Z3-mk-string-symbol,
-    Z3-mk-sub,
     Z3-mk-tactic,
     Z3-mk-theory,
     Z3-mk-true,
@@ -1091,4 +1091,4 @@ define module z3-api
     Z3-update-param-value,
     Z3-update-term,
     Z3-write-interpolation-problem;
-end module z3-api;
+end module %z3-api;
