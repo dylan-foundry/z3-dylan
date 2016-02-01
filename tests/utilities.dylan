@@ -40,17 +40,3 @@ define function mk-var
   let sym = Z3-mk-string-symbol(ctx, name);
   Z3-mk-const(ctx, sym, ty)
 end function;
-
-define function check-model
-    (ctx :: <Z3-context>,
-     expected-result :: <integer>)
- => ()
-  let (result, model) = Z3-check-and-get-model(ctx);
-  select (result)
-    $Z3-L-FALSE => #f;
-    $Z3-L-UNDEF => format-out("potential model:\n%=\n", Z3-model-to-string(ctx, model));
-    $Z3-L-TRUE => format-out("sat\n%=\n", Z3-model-to-string(ctx, model));
-  end select;
-  Z3-del-model(ctx, model);
-  assert-equal(expected-result, result);
-end function;

@@ -2,9 +2,7 @@ module: z3-test-suite
 synopsis: Test suite for the z3 library.
 
 define test simple-test ()
-  let ctx = mk-context();
-  assert-not-equal("", Z3-context-to-string(ctx));
-  Z3-del-context(ctx);
+  assert-no-errors(Z3-del-context(mk-context()));
 end test;
 
 define test bitvector-example2 ()
@@ -18,9 +16,12 @@ define test bitvector-example2 ()
                     Z3-mk-bvmul(ctx, x, y));
   assert-equal("(= (bvsub (bvxor x y) #x00000067) (bvmul x y))",
                Z3-ast-to-string(ctx, ctr));
-  Z3-assert-cnstr(ctx, ctr);
-  check-model(ctx, $Z3-L-TRUE);
+  let solver = Z3-mk-solver(ctx);
+  Z3-solver-inc-ref(ctx, solver);
+  Z3-solver-assert(ctx, solver, ctr);
+  assert-equal($Z3-L-TRUE, Z3-solver-check(ctx, solver));
 
+  Z3-solver-dec-ref(ctx, solver);
   Z3-del-context(ctx);
 end test;
 
