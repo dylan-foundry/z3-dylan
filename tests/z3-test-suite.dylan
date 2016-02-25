@@ -35,8 +35,21 @@ define test boolean-simplification ()
                Z3-ast-to-string(ctx, Z3-simplify(ctx, ast)));
 end test;
 
+define test if-then-else ()
+  let ctx = mk-context();
+  let int-sort = Z3-mk-int-sort(ctx);
+  let f = Z3-mk-false(ctx);
+  let one = Z3-mk-int(ctx, 1, int-sort);
+  let zero = Z3-mk-int(ctx, 0, int-sort);
+  let ite = Z3-mk-ite(ctx, f, one, zero);
+  assert-equal("(ite false 1 0)", Z3-ast-to-string(ctx, ite));
+  assert-equal("0", Z3-ast-to-string(ctx, Z3-simplify(ctx, ite)));
+  Z3-del-context(ctx);
+end test;
+
 define suite z3-test-suite ()
   test simple-test;
   test bitvector-example2;
   test boolean-simplification;
+  test if-then-else;
 end suite;
