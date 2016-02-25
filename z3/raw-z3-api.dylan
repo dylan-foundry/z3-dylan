@@ -730,7 +730,7 @@ define inline-only C-function Z3-mk-tuple-sort
   c-name: "Z3_mk_tuple_sort";
 end;
 
-define inline-only C-function Z3-mk-enumeration-sort
+define inline-only C-function %Z3-mk-enumeration-sort
   input parameter c_ :: <Z3-context>;
   input parameter name_ :: <Z3-symbol>;
   input parameter n_ :: <C-unsigned-int>;
@@ -833,7 +833,7 @@ end;
 
 define C-pointer-type <_Z3-ast**> => <_Z3-ast*>;
 define constant <Z3-ast<@>> = <_Z3-ast**>;
-define inline-only C-function Z3-mk-app
+define inline-only C-function %Z3-mk-app
   input parameter c_ :: <Z3-context>;
   input parameter d_ :: <Z3-func-decl>;
   input parameter num-args_ :: <C-unsigned-int>;

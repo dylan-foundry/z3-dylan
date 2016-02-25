@@ -47,9 +47,76 @@ define test if-then-else ()
   Z3-del-context(ctx);
 end test;
 
+define test enumeration-example ()
+  let ctx = mk-context();
+
+  let name = Z3-mk-string-symbol(ctx, "fruit");
+
+  let names
+    = vector(Z3-mk-string-symbol(ctx, "apple"),
+             Z3-mk-string-symbol(ctx, "banana"),
+             Z3-mk-string-symbol(ctx, "orange"));
+
+  let (fruit, makers, testers) = Z3-mk-enumeration-sort(ctx, name, names);
+  let (mk-apple, mk-banana, mk-orange) = values(makers[0], makers[1], makers[2]);
+  let (apple?, banana?, orange?) = values(testers[0], testers[1], testers[2]);
+
+  assert-equal("(declare-fun apple () fruit)",
+               Z3-func-decl-to-string(ctx, mk-apple));
+  assert-equal("(declare-fun banana () fruit)",
+               Z3-func-decl-to-string(ctx, mk-banana));
+  assert-equal("(declare-fun orange () fruit)",
+               Z3-func-decl-to-string(ctx, mk-orange));
+
+  assert-equal("(declare-fun is_apple (fruit) Bool)",
+               Z3-func-decl-to-string(ctx, apple?));
+  assert-equal("(declare-fun is_banana (fruit) Bool)",
+               Z3-func-decl-to-string(ctx, banana?));
+  assert-equal("(declare-fun is_orange (fruit) Bool)",
+               Z3-func-decl-to-string(ctx, orange?));
+
+  let apple  = Z3-mk-app(ctx, mk-apple);
+  let banana = Z3-mk-app(ctx, mk-banana);
+  let orange = Z3-mk-app(ctx, mk-orange);
+
+  let solver = Z3-mk-solver(ctx);
+  Z3-solver-inc-ref(ctx, solver);
+
+  // Apples are different from oranges
+  assert-equal($Z3-L-TRUE,
+               solver-check(ctx, solver,
+                            Z3-mk-not(ctx, Z3-mk-eq(ctx, apple, orange))));
+
+  // Apples are apples.
+  assert-equal($Z3-L-TRUE,
+               solver-check(ctx, solver,
+                            Z3-mk-app(ctx, apple?, apple)));
+
+  // Oranges are not apples
+  assert-equal($Z3-L-FALSE,
+               solver-check(ctx, solver,
+                            Z3-mk-app(ctx, apple?, orange)));
+  assert-equal($Z3-L-TRUE,
+               solver-check(ctx, solver,
+                            Z3-mk-not(ctx, Z3-mk-app(ctx, apple?, orange))));
+
+  /* If something is fruity, then it is an apple, banana or orange */
+  let fruity = mk-var(ctx, "fruity", fruit);
+  assert-equal($Z3-L-TRUE,
+               solver-check(ctx, solver,
+                            Z3-mk-or(ctx,
+                                     Z3-mk-eq(ctx, fruity, apple),
+                                     Z3-mk-eq(ctx, fruity, banana),
+                                     Z3-mk-eq(ctx, fruity, orange))));
+
+  Z3-solver-dec-ref(ctx, solver);
+  Z3-del-context(ctx);
+end test enumeration-example;
+
 define suite z3-test-suite ()
   test simple-test;
   test bitvector-example2;
   test boolean-simplification;
   test if-then-else;
+  test enumeration-example;
 end suite;

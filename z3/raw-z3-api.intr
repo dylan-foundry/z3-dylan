@@ -66,7 +66,9 @@ define interface
 
   function "Z3_mk_add" => %Z3-mk-add;
   function "Z3_mk_and" => %Z3-mk-and;
+  function "Z3_mk_app" => %Z3-mk-app;
   function "Z3_mk_distinct" => %Z3-mk-distinct;
+  function "Z3_mk_enumeration_sort" => %Z3-mk-enumeration-sort;
   function "Z3_mk_mul" => %Z3-mk-mul;
   function "Z3_mk_or" => %Z3-mk-or;
   function "Z3_mk_set_intersect" => %Z3-mk-set-intersect;
