@@ -61,6 +61,12 @@ define interface
       "Z3_get_context_assignment"
     };
 
+  function "Z3_get_version",
+    output-argument: 1,
+    output-argument: 2,
+    output-argument: 3,
+    output-argument: 4;
+
   function "Z3_check_and_get_model",
     output-argument: 2;
 

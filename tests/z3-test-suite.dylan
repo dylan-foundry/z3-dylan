@@ -5,6 +5,12 @@ define test simple-test ()
   assert-no-errors(Z3-del-context(mk-context()));
 end test;
 
+define test version-test ()
+  let (major, minor, build, revision) = Z3-get-version();
+  assert-equal(4, major);
+  assert-true(minor >= 4);
+end test;
+
 define test bitvector-example2 ()
   let ctx = mk-context();
   let bv-sort = Z3-mk-bv-sort(ctx, 32);
@@ -141,6 +147,7 @@ end test enumeration-example;
 
 define suite z3-test-suite ()
   test simple-test;
+  test version-test;
   test bitvector-example2;
   test boolean-simplification;
   test numeral-example;

@@ -2850,10 +2850,10 @@ define inline-only C-function Z3-get-error-msg-ex
 end;
 
 define inline-only C-function Z3-get-version
-  input parameter major_ :: <unsigned-int*>;
-  input parameter minor_ :: <unsigned-int*>;
-  input parameter build-number_ :: <unsigned-int*>;
-  input parameter revision-number_ :: <unsigned-int*>;
+  output parameter major_ :: <unsigned-int*>;
+  output parameter minor_ :: <unsigned-int*>;
+  output parameter build-number_ :: <unsigned-int*>;
+  output parameter revision-number_ :: <unsigned-int*>;
   c-name: "Z3_get_version";
 end;
 
