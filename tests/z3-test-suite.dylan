@@ -35,6 +35,32 @@ define test boolean-simplification ()
                Z3-ast-to-string(ctx, Z3-simplify(ctx, ast)));
 end test;
 
+define test numeral-example ()
+  let ctx = mk-context();
+  let solver = Z3-mk-solver(ctx);
+  Z3-solver-inc-ref(ctx, solver);
+
+  let real-sort = Z3-mk-real-sort(ctx);
+  let n1 = Z3-mk-numeral(ctx, "1/2", real-sort);
+  let n2 = Z3-mk-numeral(ctx, "0.5", real-sort);
+  assert-equal("(/ 1.0 2.0)", Z3-ast-to-string(ctx, n1));
+  assert-equal("(/ 1.0 2.0)", Z3-ast-to-string(ctx, n2));
+  assert-equal($Z3-L-TRUE,
+               solver-check(ctx, solver,
+                            Z3-mk-eq(ctx, n1, n2)));
+
+  let n1 = Z3-mk-numeral(ctx, "-1/3", real-sort);
+  let n2 = Z3-mk-numeral(ctx, "-0.333333333333333333333333333333333333333333333", real-sort);
+  assert-equal("(- (/ 1.0 3.0))", Z3-ast-to-string(ctx, n1));
+  assert-equal("(- (/ 333333333333333333333333333333333333333333333.0\n      1000000000000000000000000000000000000000000000.0))", Z3-ast-to-string(ctx, n2));
+  assert-equal($Z3-L-TRUE,
+               solver-check(ctx, solver,
+                            Z3-mk-not(ctx, Z3-mk-eq(ctx, n1, n2))));
+
+  Z3-solver-dec-ref(ctx, solver);
+  Z3-del-context(ctx);
+end test;
+
 define test if-then-else ()
   let ctx = mk-context();
   let int-sort = Z3-mk-int-sort(ctx);
@@ -117,6 +143,7 @@ define suite z3-test-suite ()
   test simple-test;
   test bitvector-example2;
   test boolean-simplification;
+  test numeral-example;
   test if-then-else;
   test enumeration-example;
 end suite;
